@@ -1,0 +1,25 @@
+﻿<Window x:Class="Hobby2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Hobby2.ViewModels"
+        mc:Ignorable="d"
+        Title="HobbyBobbyBus" Height="450" Width="668">
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+
+    <Grid Margin="0,0,19,0">
+        <ListView ItemsSource="{Binding Hobbies}" Margin="0,0,0,94">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Hobby" DisplayMemberBinding="{Binding Name}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <TextBox x:Name="HobbyTextBox" HorizontalAlignment="Left" Height="23" Margin="43,364,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Lägg till" Command="{Binding AddHobbyCommand}" CommandParameter="{Binding Text, ElementName=HobbyTextBox}" HorizontalAlignment="Left" Margin="173,364,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>
